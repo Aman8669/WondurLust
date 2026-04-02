@@ -2,7 +2,7 @@
 
     <div class="row ">
         <div class="col-8 offset-3 mt-3">
-         <h3>Listing Details :</h3>
+         <h3><%= listing.title %> </h3>
          </div>
 
     <div class="col-6 offset-3">
@@ -10,11 +10,10 @@
         <img src="<%= listing.image %>" class="card-img-top card-img" alt="listing image">
         <div class="card-body">
         <p class="card-text">
-           <b> <%= listing.title %> </b>
-            <%= listing.title %> <br>
-            &#8377; <%= listing.price.toLocaleString("en-IN") %> <br>
+           <%= listing.description %> <br>
+           <b> &#8377; <%= listing.price.toLocaleString("en-IN") %></b> <br>
             <%= listing.location %> <br>
-            <%= listing.country %> br
+            <%= listing.country %> 
         </p>
   </div>
     </div>
@@ -26,6 +25,25 @@
         <button class="btn btn-dark offset-3">Delete</button>
     </form>
     </div>
+       <hr>
+    </div>
+ 
 
-</div>
+    <div class="col-8 offset-3 mt-3 mb-3">
+        <form class="mb-3">
+            <div class = "mb-3 mt-3">
+            <h4>Leave a Review</h4>
+            <label for="rating" >Rating</label>
+            <input type="range"  name="review[rating]" min="1" max="5" class="form-range">
+            </div>
+
+            <div class = "mb-3 mt-3">
+                <label for="comment" class="form-label">Comments</label>
+                <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control"></textarea>
+            </div>
+            
+            <button class="btn btn-outline-dark">Submit</button>
+        </form>
+    </div>
+
 </div>    
