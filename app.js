@@ -7,7 +7,9 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
-const {listingSchema} = require("./schema.js");
+const {listingSchema, reviewSchema} = require("./schema.js");
+const Review = require("./model/review.js");
+
 
 let MONGO_URL = "mongodb://127.0.0.1:27017/wonderlust2";
 
@@ -38,6 +40,16 @@ const validateListing = (req,res,next) =>{
     }
 }
 
+const validateReview = (req,res,next) =>{
+    const { error } = reviewSchema.validate(req.body); // validate
+    if(error){
+        let errMsg = error.details.map((el)=> el.message).join(",");
+        throw new ExpressError(400, errMsg); 
+    } else {
+        next();
+    }
+}
+
 // index Route
 app.get("/listing",wrapAsync(async (req,res)=>{
  const allListings =   await Listing.find({});
@@ -60,7 +72,7 @@ app.get("/listing/:id/edit",wrapAsync(async (req,res)=>{
 //show route
 app.get("/listing/:id",wrapAsync(async (req,res)=>{
     let {id} = req.params;
-    const listing = await Listing.findById(id);
+    const listing = await Listing.findById(id).populate("reviews");
     res.render("listings/show.ejs",{listing});
 }));
 
@@ -79,6 +91,20 @@ app.delete("/listing/:id",wrapAsync( async (req, res) => {
     let { id } = req.params;
     await Listing.findByIdAndDelete(id);
     res.redirect("/listing");
+}));
+
+// review route 
+app.post("/listing/:id/reviews", validateReview,wrapAsync(async (req, res) => {
+    let listing = await Listing.findById(req.params.id);
+    let newReview = new Review(req.body.review);
+
+    listing.reviews.push(newReview);
+
+    await newReview.save();
+    await listing.save();
+
+    console.log("New review saved");
+    res.redirect(`/listing/${listing._id}`);
 }));
 
 
