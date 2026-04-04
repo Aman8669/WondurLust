@@ -7,6 +7,7 @@ const wrapAsync = require("../utils/wrapAsync.js");
 const ExpressError = require("../utils/ExpressError.js");
 const { reviewSchema } = require("../schema.js");
 
+
 const validateReview = (req, res, next) => {
     const { error } = reviewSchema.validate(req.body);
     if (error) {
@@ -26,8 +27,7 @@ router.post("/", validateReview, wrapAsync(async (req, res) => {
 
     await newReview.save();
     await listing.save();
-
-    console.log("New review saved");
+    req.flash("success", "New Review Created");
     res.redirect(`/listing/${listing._id}`);
 }));
 
@@ -37,7 +37,7 @@ router.delete("/:reviewId", wrapAsync(async (req, res) => {
 
     await Listing.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
     await Review.findByIdAndDelete(reviewId);
-
+    req.flash("success", "Review Deleted");
     res.redirect(`/listing/${id}`);
 }));
 
