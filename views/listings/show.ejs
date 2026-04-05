@@ -10,21 +10,25 @@
         <img src="<%= listing.image %>" class="card-img-top card-img" alt="listing image">
         <div class="card-body">
         <p class="card-text">
-           <%= listing.description %> <br>
-           <b> &#8377; <%= listing.price.toLocaleString("en-IN") %></b> <br>
-            <%= listing.location %> <br>
-            <%= listing.country %> 
+           <p><b>Owned By : </b> <i><%= listing.owner.username %></i></p>
+           <p><%= listing.description %> </p>
+          <p> <b> &#8377; <%= listing.price.toLocaleString("en-IN") %> </b></p>
+           <p> <%= listing.location %></p>
+           <p> <%= listing.country %> </p>
         </p>
   </div>
     </div>
    <br>
+  <% if(currUser && listing.owner && currUser._id.toString() === listing.owner._id.toString()) { %>
     <div class="btns">
-        <a href="/listing/<%= listing._id %>/edit" class="btn btn-dark edit-btn md-col-2">Edit</a><br><br>
+        <a href="/listing/<%= listing._id %>/edit" class="btn btn-dark edit-btn md-col-2">Edit</a>
+        <br><br>
     
         <form method="POST" action="/listing/<%= listing._id %>?_method=DELETE">
-        <button class="btn btn-dark offset-3">Delete</button>
-    </form>
+            <button class="btn btn-dark offset-3">Delete</button>
+        </form>
     </div>
+<% } %>
        <hr>
     </div>
  
