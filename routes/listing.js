@@ -48,6 +48,22 @@ router.get("/search", wrapAsync(async (req, res) => {
     res.render("listings/index.ejs", { allListings });
 }));
 
+
+
+// CATEGORY FILTER Route
+router.get("/category/:categoryName", wrapAsync(async (req, res) => {
+    let { categoryName } = req.params;
+
+    const allListings = await Listing.find({ category: categoryName });
+
+    if (allListings.length === 0) {
+        req.flash("error", `No listings found in ${categoryName}`);
+        return res.redirect("/listing");
+    }
+
+    res.render("listings/index.ejs", { allListings });
+}));
+
 // SHOW + UPDATE + DELETE
 router.route("/:id")
     .get(wrapAsync(listingController.showListing))

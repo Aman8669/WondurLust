@@ -128,6 +128,8 @@ body{
     border: 1px solid #ccc;
 }
 
+
+
 #filters {
     display: flex;
     align-items: center;
@@ -140,6 +142,11 @@ body{
 
 #filters::-webkit-scrollbar {
     display: none;
+}
+
+.filter-link {
+    text-decoration: none;
+    color: inherit;
 }
 
 .filter {
@@ -197,6 +204,8 @@ body{
     cursor: pointer;
 }
 
-.tax-info{
+.tax-info {
     display: none;
 }
+
+

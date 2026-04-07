@@ -23,16 +23,20 @@ module.exports.listingRender = (req, res) => {
        res.render("listings/show.ejs", { listing });
    }
 
-  module.exports.createListing =    async (req, res) => {
-         let url = req.file.path;
-         let filename = req.file.filename;
-         const newListing = new Listing(req.body.listing);
-         newListing.owner = req.user._id;
-         newListing.image = {url, filename};
-         await newListing.save();
-         req.flash("success", "New Listing Created");
-         return res.redirect("/listing");
-     }
+  module.exports.createListing = async (req, res) => {
+    let url = req.file.path;
+    let filename = req.file.filename;
+
+    const newListing = new Listing(req.body.listing);
+    newListing.owner = req.user._id;
+    newListing.image = { url, filename };
+
+    console.log(req.body.listing);   // 👈 ADD THIS
+
+    await newListing.save();
+    req.flash("success", "New Listing Created");
+    return res.redirect("/listing");
+}
 
 
 module.exports.editListing = async (req, res) => {

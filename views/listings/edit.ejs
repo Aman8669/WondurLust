@@ -50,6 +50,22 @@
     </div>
     </div>
 
+  <div class="mb-3">
+  <label for="category" class="form-label">Category</label>
+  <select name="listing[category]" class="form-control" required>
+    <option value="Trending" <%= listing.category === "Trending" ? "selected" : "" %>>Trending</option>
+    <option value="Rooms" <%= listing.category === "Rooms" ? "selected" : "" %>>Rooms</option>
+    <option value="City Views" <%= listing.category === "City Views" ? "selected" : "" %>>City Views</option>
+    <option value="Mountains" <%= listing.category === "Mountains" ? "selected" : "" %>>Mountains</option>
+    <option value="Castles" <%= listing.category === "Castles" ? "selected" : "" %>>Castles</option>
+    <option value="Luxury" <%= listing.category === "Luxury" ? "selected" : "" %>>Luxury</option>
+    <option value="Amazing Pools" <%= listing.category === "Amazing Pools" ? "selected" : "" %>>Amazing Pools</option>
+    <option value="Camping" <%= listing.category === "Camping" ? "selected" : "" %>>Camping</option>
+    <option value="Beachfront" <%= listing.category === "Beachfront" ? "selected" : "" %>>Beachfront</option>
+    <option value="Arctic" <%= listing.category === "Arctic" ? "selected" : "" %>>Arctic</option>
+  </select>
+  </div>
+
     <button class="btn btn-dark mt-3 edit-btn">Edit</button><br>
 </form>
 
