@@ -119,3 +119,84 @@ body{
     display: flex;
 }
 
+
+.edit-img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+#filters {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
+    scrollbar-width: none;
+}
+
+#filters::-webkit-scrollbar {
+    display: none;
+}
+
+.filter {
+    text-align: center;
+    min-width: 80px;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.filter:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.filter i {
+    font-size: 1.4rem;
+    margin-bottom: 0.4rem;
+    color: #555;
+}
+
+.filter p {
+    font-size: 0.85rem;
+    margin: 0;
+    color: #333;
+    white-space: nowrap;
+}
+
+.tax-toggle {
+    border: 1px solid #ddd;
+    border-radius: 1rem;
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    margin-left: auto;
+    min-width: fit-content;
+    background-color: #fff;
+}
+
+.tax-toggle .form-check {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tax-toggle .form-check-label {
+    font-size: 0.95rem;
+    color: #333;
+    cursor: pointer;
+}
+
+.tax-toggle .form-check-input {
+    cursor: pointer;
+}
+
+.tax-info{
+    display: none;
+}
