@@ -1,10 +1,14 @@
 {
+  "engines": {
+    "node": "24.13.0"
+  },
   "name": "major-project",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +17,7 @@
   "dependencies": {
     "cloudinary": "^1.41.3",
     "connect-flash": "^0.1.1",
+    "connect-mongo": "^4.6.0",
     "dotenv": "^17.4.1",
     "ejs": "^4.0.1",
     "ejs-mate": "^4.0.0",

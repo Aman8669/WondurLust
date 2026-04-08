@@ -133,7 +133,7 @@ body{
 #filters {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
     overflow-x: auto;
     padding: 1rem 0;
     margin-bottom: 1.5rem;

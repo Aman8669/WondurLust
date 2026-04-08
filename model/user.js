@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+
 const plmImport = require("passport-local-mongoose");
 const passportLocalMongoose = plmImport.default || plmImport;
 
@@ -7,7 +8,8 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true,
-  }
+    unique: true,
+  },
 });
 
 userSchema.plugin(passportLocalMongoose);

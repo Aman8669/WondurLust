@@ -31,8 +31,6 @@ module.exports.listingRender = (req, res) => {
     newListing.owner = req.user._id;
     newListing.image = { url, filename };
 
-    console.log(req.body.listing);   // 👈 ADD THIS
-
     await newListing.save();
     req.flash("success", "New Listing Created");
     return res.redirect("/listing");
