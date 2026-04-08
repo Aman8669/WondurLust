@@ -4,8 +4,8 @@
   },
   "name": "major-project",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Wonderlust travel listing web app",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"
